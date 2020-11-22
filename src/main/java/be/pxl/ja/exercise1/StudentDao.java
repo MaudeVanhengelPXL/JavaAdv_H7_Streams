@@ -17,7 +17,7 @@ public class StudentDao {
 		students.add(new Student("Gary", 2017,88, LocalDate.of(1996, 7,12)));
 		students.add(new Student("Henry", 2017, 98, LocalDate.of(1997, 8,12)));
 		students.add(new Student("Ivan", 2018, 66, LocalDate.of(1999, 3,21)));
-		students.add(new Student("John", 2017, 52, LocalDate.of(1997, 1,3)));
+		students.add(new Student("John", 2017, 52, LocalDate.of(1997, 11,22)));
 		return students;
 	}
 }
