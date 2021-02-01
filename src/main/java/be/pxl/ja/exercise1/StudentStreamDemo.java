@@ -1,10 +1,7 @@
 package be.pxl.ja.exercise1;
 
 import java.time.LocalDate;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StudentStreamDemo {
@@ -54,9 +51,21 @@ public class StudentStreamDemo {
         System.out.println("De jongste student van afstudeerjaar 2018 is: " + youngestStudent2018.get());
 
         //8 Maak een map met per afstudeerjaar de gemiddelde score
-        /*HashMap<Integer, Integer> scorePerGraduationYear = studentList.stream()
-                .map()*/
+        Map<Integer, Double> scorePerGraduationYear = studentList.stream()
+                .collect(Collectors.groupingBy(
+                        Student::getGraduationYear,
+                        Collectors.averagingInt(Student::getScore)
+                ));
+        System.out.println(scorePerGraduationYear);
+
         //9 Sorteer eerst op studentenjaar en daarna op score hoog naar laag
 
+        studentList.stream()
+                .sorted(
+                        Comparator.comparing(Student::getGraduationYear)
+                        .thenComparing(Student::getScore).reversed()
+                )
+                .forEach(student -> System.out.println(String.format("Naam: %s, afstudeerjaar: %d, score: %d",
+                        student.getName(), student.getGraduationYear(), student.getScore())));
     }
 }
